@@ -9,6 +9,13 @@
  *  @version    $Id: Sample_SmartyPlugin.php,v 1.1 2005/01/23 13:46:58 masaki-f Exp $
  */
 
+/**
+ * Haste_SmartyPlugins
+ *
+ * @package Haste
+ * @author halt <halt.hde@gmail.com>
+ * @access public
+ */
 class Haste_SmartyPlugins
 {
 

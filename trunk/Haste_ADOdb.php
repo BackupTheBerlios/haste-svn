@@ -1,8 +1,9 @@
 <?php
 // vim: foldmethod=marker
 /**
- *  Ethna_DB.php
+ *  Haste_ADOdb.php
  *
+ *  @package    Haste
  *  @author     halt <halt.hde@gmail.com>
  *  @version    $Id$
  */
@@ -10,11 +11,11 @@
 require_once 'adodb/adodb.inc.php';
 
 /**
- *  Ethna用DB抽象クラス
+ *  Haste_ADOdb
  *
- *  EthnaのフレームワークでDBオブジェクトを扱うための抽象クラス
- *  (のつもり...あぁすばらしきPHP 4)
+ *  EthnaのフレームワークでADOdbオブジェクトを扱うための抽象クラス
  *
+ *  @package    Haste
  *  @author     halt <halt.hde@gmail.com>
  *  @access     public
  */
