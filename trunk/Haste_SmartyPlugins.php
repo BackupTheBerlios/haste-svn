@@ -3,18 +3,18 @@
 /**
  *  Haste_SmartyPlugins.php
  *
- *  @author     halt <halt.hde@gmail.com>
+ *  @author     halt feits <halt.feits@gmail.com>
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @package    Haste
  *  @version    $Id: Sample_SmartyPlugin.php,v 1.1 2005/01/23 13:46:58 masaki-f Exp $
  */
 
 /**
- * Haste_SmartyPlugins
+ *  Haste_SmartyPlugins
  *
- * @package Haste
- * @author halt <halt.hde@gmail.com>
- * @access public
+ *  @package Haste
+ *  @author     halt feits <halt.feits@gmail.com>
+ *  @access public
  */
 class Haste_SmartyPlugins
 {
@@ -202,8 +202,18 @@ function form_input($params, &$smarty)
     {
         require_once "Cache/Lite.php";
 
-        $encoding_from = 'UTF-8';
-        $encoding_to = 'euc-jp';
+        if (isset($params['encoding_from'])) {
+            $encoding_from = $params['encoding_from'];
+        } else {
+            $encoding_from = 'UTF-8';
+        }
+        
+        if (isset($params['encoding_to'])) {
+            $encoding_to = $params['encoding_to'];
+        } else {
+            $encoding_to = 'euc-jp';
+        }
+
         $Controller =& Ethna_Controller::getInstance();
         $dir_cache = $Controller->getDirectory('tmp');
         $options = array(
@@ -239,7 +249,7 @@ function form_input($params, &$smarty)
                 $dc = $item->children('http://purl.org/dc/elements/1.1/');
             
                 $date = isset($dc->date) ? '&nbsp;(' . date('Y-m-d H:i', strtotime($dc->date)) . ')' : '';
-                $link = $item->link;
+                $link = str_replace('&', '&amp;', $item->link);
                 $title = mb_convert_encoding($item->title, 'UTF-8', 'auto');
                 $line = '<li>';
                 $line.= "<a href=\"{$link}\">{$title}</a>";
