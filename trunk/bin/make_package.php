@@ -27,7 +27,7 @@ $config = array(
 print("Start Script\n");
 $packagexml = new PEAR_PackageFileManager2;
 $packagexml->setOptions($config);
-$packagexml->setPackage('Haste');
+$packagexml->setPackage('Ethna_Haste');
 $packagexml->setSummary('Haste - Ethna support Pack');
 $packagexml->setDescription($description);
 $packagexml->setLicense('BSD', 'http://www.opensource.org/licenses/bsd-license.php');
