@@ -27,6 +27,7 @@ class Haste_SmartyPlugins
 /**
  *  smarty function:フォーム表示名生成
  *
+ *  @deprecated please use Ethna_ViewClass
  *  @param  string  $name   フォーム項目名
  */
 function form_name($params, &$smarty)
@@ -72,8 +73,6 @@ function form_name($params, &$smarty)
 /**
  *  smarty function:フォームタグ生成
  *
- *  結構適当です(ぉぃ
- *
  *  sample:
  *  <code>
  *  {form_input name="mailaddress" attr="..."}
@@ -118,11 +117,16 @@ function form_input($params, &$smarty)
         break;
     
     case FORM_TYPE_TEXTAREA:
+
         $input = sprintf('<textarea name="%s"', $name);
+        $input .= " class=\"actionform_textarea\" id=\"actionform_{$name}\"";
+
         if (isset($attr)) {
             $input .= " $attr";
         }
+
         $input .= sprintf('>%s</textarea>', htmlspecialchars($af->get($name)));
+
         break;
     
     case FORM_TYPE_PASSWORD:
@@ -177,6 +181,17 @@ function form_input($params, &$smarty)
  
         break;
         
+    case FORM_TYPE_HIDDEN:
+        $input = sprintf('<input type="hidden" name="%s" value="%s"', $name, htmlspecialchars($af->get($name)));
+        if (isset($attr)) {
+            $input .= " $attr";
+        }
+        if (isset($def['max']) && $def['max']) {
+            $input .= sprintf(' maxlength="%d"', $def['max']);
+        }
+        $input .= " />";
+        break;
+
     case FORM_TYPE_TEXT:
         // fall thru
     
@@ -188,7 +203,7 @@ function form_input($params, &$smarty)
         if (isset($def['max']) && $def['max']) {
             $input .= sprintf(' maxlength="%d"', $def['max']);
         }
-        $input .= " />";
+        $input .= " class=\"actionform_text\" id=\"actionform_{$name}\" />";
         break;
     }
 
