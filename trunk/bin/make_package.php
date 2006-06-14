@@ -11,7 +11,7 @@
 require_once('PEAR/PackageFileManager2.php');
 
 $description = 'Haste is Ethna Supplement';
-$varsion = '0.9.0';
+$varsion = '1.0.0';
 
 $config = array(
     'baseinstalldir' => 'Ethna/Haste',
@@ -21,10 +21,10 @@ $config = array(
     'changelogoldtonew' => false,
     'description' => $description,
     'simpleoutput' => true,
-
-    );
+);
  
 print("Start Script\n");
+
 $packagexml = new PEAR_PackageFileManager2;
 $packagexml->setOptions($config);
 $packagexml->setPackage('Ethna_Haste');
